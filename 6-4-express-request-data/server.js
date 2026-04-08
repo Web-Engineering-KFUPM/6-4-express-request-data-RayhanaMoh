@@ -114,7 +114,7 @@ app.listen(3000, ()=>
     console.log("API running at http://localhost:3000"));
 
 // Query params: /echo?name=Ali&age=22
-app.get("/echo", (req,res)=>{ ... });
+app.get("/echo", (req,res)=>{
 const {name, age} = req.query;
 
 if (!name || !age) {
@@ -122,6 +122,14 @@ if (!name || !age) {
      ok:false,
      error:"name & age required" });
 }
+
+ res.json({
+  ok: true,
+  name,
+  age,
+  msg: `Hello ${name}, you are ${age}`
+ });
+});
 
 // Route params: /profile/First/Last
 
